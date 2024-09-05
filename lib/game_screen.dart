@@ -72,7 +72,7 @@ class _GameScreenState extends State<GameScreen> {
           Expanded(
             child: Center(
               child: SizedBox(
-                width: _level * 44 + (_level - 1) * 16,
+                width: _level * 60,
                 child: GridView.builder(
                   primary: false,
                   shrinkWrap: true,
@@ -138,7 +138,7 @@ class _GameScreenState extends State<GameScreen> {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white.withOpacity(0.6),
-                                letterSpacing: -3,
+                                letterSpacing: -0.5,
                               ),
                             ),
                             const Spacer(),
@@ -148,7 +148,7 @@ class _GameScreenState extends State<GameScreen> {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white,
-                                letterSpacing: -3,
+                                letterSpacing: -0.5,
                               ),
                             ),
                           ],
