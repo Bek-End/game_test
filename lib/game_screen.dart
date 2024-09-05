@@ -70,27 +70,35 @@ class _GameScreenState extends State<GameScreen> {
         children: [
           const _EdgeContainer(hasTopBorderRadius: true),
           Expanded(
-            child: GridView.builder(
-              primary: false,
-              padding: const EdgeInsets.all(20),
-              itemCount: _level * _level,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: _level,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-              ),
-              itemBuilder: (context, index) {
-                if (index == 0) return const SizedBox.shrink();
-
-                return InkWell(
-                  onTap: () => _onTap(index),
-                  child: Image.asset(
-                    'assets/images/${_list[index]}.png',
-                    height: 44,
-                    fit: BoxFit.contain,
+            child: Center(
+              child: SizedBox(
+                width: _level * 44 + (_level - 1) * 16,
+                child: GridView.builder(
+                  primary: false,
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.all(20),
+                  itemCount: _level * _level,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: _level,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    mainAxisExtent: 44,
+                    childAspectRatio: 1,
                   ),
-                );
-              },
+                  itemBuilder: (context, index) {
+                    if (index == 0) return const SizedBox.shrink();
+
+                    return InkWell(
+                      onTap: () => _onTap(index),
+                      child: Image.asset(
+                        'assets/images/${_list[index]}.png',
+                        height: 44,
+                        fit: BoxFit.contain,
+                      ),
+                    );
+                  },
+                ),
+              ),
             ),
           ),
           _EdgeContainer(
@@ -107,7 +115,8 @@ class _GameScreenState extends State<GameScreen> {
                         hours: false, milliSecond: false);
                     return Container(
                       height: 44,
-                      width: 140,
+                      width: 139,
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       decoration: BoxDecoration(
                         color: const Color(0xFFCC620C),
                         borderRadius: BorderRadius.circular(12),
@@ -129,14 +138,17 @@ class _GameScreenState extends State<GameScreen> {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white.withOpacity(0.6),
+                                letterSpacing: -3,
                               ),
                             ),
+                            const Spacer(),
                             Text(
                               displayTime,
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white,
+                                letterSpacing: -3,
                               ),
                             ),
                           ],
